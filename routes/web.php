@@ -14,3 +14,13 @@
 Route::get('/', 'ProductController@index');
 
 Route::get('/admin', 'ProductController@admin');
+
+Route::get('/admin/buy-product/{id}', 'ProductController@buyProduct');
+
+Route::get('/admin/edit-product/{id}', 'ProductController@editProduct');
+
+Route::get('/admin/delete-voucher/{id}', 'ProductController@deleteVoucher');
+
+Route::post('/admin/add-voucher', 'ProductController@addVoucher');
+
+Route::post('/admin/add-product', 'ProductController@addProduct');

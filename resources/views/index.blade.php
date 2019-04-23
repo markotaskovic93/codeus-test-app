@@ -70,21 +70,10 @@
 
                             </td>
                             <td><b>${{ $product->price - (($product->price / 100) * $discount) }}</b></td>
-                            <td><a class="btn btn-primary" href="#">Buy</a></td>
+                            <td><a class="btn btn-primary" href="/admin/buy-product/{{ $product->id }}">Buy</a></td>
                         </tr>
 
                         @endforeach
-
-
-                        @if(date('Y-m-d'))
-
-                            radi 
-
-                        @else
-
-                            ne radi
-
-                        @endif
 
                     </tbody>
                 </table>
