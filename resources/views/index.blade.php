@@ -19,6 +19,11 @@
 
     <div class="container">
         <div class="row">
+
+            <div class="col-12 text-right">
+                <a class="btn btn-primary" href="/admin">Dashboard</a>
+            </div>
+
             <div class="col-12">
 
                 <table class="table">
@@ -32,20 +37,55 @@
                         </tr>
                     </thead>
                     <tbody>
+
+
+                        @foreach($products as $product)
+
                         <tr>
-                            <th scope="row">First Product</th>
-                            <td>$12.50</td>
-                            <td><span class="badge badge-primary">10%</span><span class="badge badge-primary">15%</span></td>
-                            <td><b>$8.30</b></td>
+                            <th scope="row">{{ $product->title }}</th>
+                            <td><b>${{ $product->price }}</b></td>
+                            <td>
+                                
+                                <?php $discount = 0; ?>
+
+                                @foreach($vouchers as $voucher)
+
+                                    @if($product->id == $voucher->product_id)
+
+                                        @if($voucher->end_date < date('Y-m-d'))
+
+                                            no Active Vouchers
+
+                                        @else
+
+                                            <span class="badge badge-primary">{{ $voucher->voucher }}%</span>
+
+                                            <?php $discount += $voucher->voucher; if($discount > 60){ $discount = 60; } ?>
+                                         
+                                        @endif
+
+                                    @endif
+
+                                @endforeach
+
+                            </td>
+                            <td><b>${{ $product->price - (($product->price / 100) * $discount) }}</b></td>
                             <td><a class="btn btn-primary" href="#">Buy</a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">First Product</th>
-                            <td>$12.50</td>
-                            <td><span class="badge badge-primary">10%</span><span class="badge badge-primary">15%</span></td>
-                            <td><b>$8.30</b></td>
-                            <td><a class="btn btn-primary" href="#">Buy</a></td>
-                        </tr>
+
+                        @endforeach
+
+
+                        @if(date('Y-m-d'))
+
+                            radi 
+
+                        @else
+
+                            ne radi
+
+                        @endif
+
                     </tbody>
                 </table>
 

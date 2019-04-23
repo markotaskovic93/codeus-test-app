@@ -13,4 +13,10 @@ class Product extends Model
 
     ];
 
+    public function Voucher(){
+
+        return $this->hasMany(Voucher::class);
+
+    }
+
 }
