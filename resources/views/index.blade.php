@@ -52,7 +52,7 @@
 
                                     @if($product->id == $voucher->product_id)
 
-                                        @if($voucher->end_date < date('Y-m-d'))
+                                        @if($voucher->start_date >= date('Y-m-d') && $voucher->end_date <= date('Y-m-d'))
 
                                             no Active Vouchers
 

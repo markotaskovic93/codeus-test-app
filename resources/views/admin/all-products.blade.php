@@ -82,15 +82,15 @@
                 
                                     @if($product->id == $voucher->product_id)
                 
-                                        @if($voucher->end_date < date('Y-m-d'))
-                
-                                            no Active Vouchers
-                
-                                        @else
-                
+                                        @if($voucher->start_date >= date('Y-m-d') && $voucher->end_date <= date('Y-m-d'))
+                                            
                                             <span class="badge badge-primary">{{ $voucher->voucher }}%</span>
-                
+                    
                                             <?php $discount += $voucher->voucher; if($discount > 60){ $discount = 60; } ?>
+                                           
+                                        @else
+                                
+                                            no Active Vouchers            
                                             
                                         @endif
                 
@@ -110,7 +110,6 @@
         </div>
 
     </div>
-
 
 
 @endsection
